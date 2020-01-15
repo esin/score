@@ -25,9 +25,9 @@
         }
 
         #main {
-            height: 100%;
             font-size: 80vh;
             line-height: 80vh;
+            display: inline-block;
         }
 
         table {
@@ -36,36 +36,45 @@
             margin: 0px;
             padding: 0px;
         }
+
+        #wrapper {
+            text-align: center;
+        }
     </style>
 </head>
 
 <body style="text-align:center;">
-    <div id="main">
-        <label id="score">0</label>
+    <div id="wrapper">
+        <div id="main">
+            <label id="score">0</label>
+        </div>
+        <div style="text-align:center;">
+            <table style="width:100%;">
+                <tbody>
+                    <tr>
+                        <td id="score_0" onclick="scoreOnClick('0');">0</td>
+                        <td id="score_1" onclick="scoreOnClick('1');">1</td>
+                        <td id="score_2" onclick="scoreOnClick('2');">2</td>
+                        <td id="score_3" onclick="scoreOnClick('3');">3</td>
+                        <td id="score_4" onclick="scoreOnClick('4');">4</td>
+                        <td id="score_5" onclick="scoreOnClick('5');">5</td>
+                        <td id="score_6" onclick="scoreOnClick('6');">6</td>
+                        <td id="score_7" onclick="scoreOnClick('7');">7</td>
+                        <td id="score_8" onclick="scoreOnClick('8');">8</td>
+                        <td id="score_9" onclick="scoreOnClick('9');">9</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div style="text-align:center;">
-        <table style="width:100%;">
-            <tbody>
-                <tr>
-                    <td onclick="scoreOnClick('0');">0</td>
-                    <td onclick="scoreOnClick('1');">1</td>
-                    <td onclick="scoreOnClick('2');">2</td>
-                    <td onclick="scoreOnClick('3');">3</td>
-                    <td onclick="scoreOnClick('4');">4</td>
-                    <td onclick="scoreOnClick('5');">5</td>
-                    <td onclick="scoreOnClick('6');">6</td>
-                    <td onclick="scoreOnClick('7');">7</td>
-                    <td onclick="scoreOnClick('8');">8</td>
-                    <td onclick="scoreOnClick('9');">9</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
 </body>
 <script>
     function scoreOnClick(e) {
         document.getElementById("score").innerHTML = e;
+        for (var x = 0; x < 10; x++) {
+            document.getElementById("score_" + x).style.opacity = 0.2;
+        }
+        document.getElementById("score_" + e).style.opacity = 1;
     }
 </script>
 
