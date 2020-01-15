@@ -5,12 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
-
+    <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
     <style>
         html,
         body {
             height: 95%;
-
         }
 
         footer {
@@ -21,8 +20,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            font-family: "Roboto", sans-serif;
-            font-size: 1200;
+            font-family: 'Alata', sans-serif;
             overflow: hidden;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -36,44 +34,15 @@
 
         #main {
             height: 100%;
-            font-size: 80vh;
-            line-height: 80vh;
+            font-size: 90vh;
+            line-height: 90vh;
         }
 
-        [type="number"]::-webkit-inner-spin-button,
-        [type="number"]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            height: auto;
-        }
-
-        .stepper {
-            border: 1px solid #eee;
+        .divFooter {
+            width: 9.09%;
+            width: calc(100% / 11);
             display: inline-block;
-            overflow: visible;
-            height: 2.1em;
-            background: #fff;
-            padding: 1px;
-        }
-
-        .stepper input {
-            width: 3em;
-            height: 100%;
-            text-align: center;
-            border: 0;
-            background: transparent;
-            color: #000;
-        }
-
-        .stepper button {
-            width: 1.4em;
-            font-weight: 300;
-            height: 100%;
-            line-height: 0.1em;
-            font-size: 1.4em;
-            padding: 0.2em !important;
-            background: #eee;
-            color: #333;
-            border: none;
+            font-size: 7vh;
         }
     </style>
 </head>
@@ -84,48 +53,20 @@
     </div>
 </body>
 <footer style="text-align:center;">
-
-    <span class="stepper">
-        <button>–</button>
-        <input type="number" id="stepper" value="0" min="0" max="9" step="1" readonly>
-        <button>+</button>
-    </span>
-
+    <div class="divFooter" onclick="scoreOnClick('0');">0</div>
+    <div class="divFooter" onclick="scoreOnClick('1');">1</div>
+    <div class="divFooter" onclick="scoreOnClick('2');">2</div>
+    <div class="divFooter" onclick="scoreOnClick('3');">3</div>
+    <div class="divFooter" onclick="scoreOnClick('4');">4</div>
+    <div class="divFooter" onclick="scoreOnClick('5');">5</div>
+    <div class="divFooter" onclick="scoreOnClick('6');">6</div>
+    <div class="divFooter" onclick="scoreOnClick('7');">7</div>
+    <div class="divFooter" onclick="scoreOnClick('8');">8</div>
+    <div class="divFooter" onclick="scoreOnClick('9');">9</div>
 </footer>
-
 <script>
-    var inc = document.getElementsByClassName("stepper");
-    for (i = 0; i < inc.length; i++) {
-        var incI = inc[i].querySelector("input"),
-            id = incI.getAttribute("id"),
-            min = incI.getAttribute("min"),
-            max = incI.getAttribute("max"),
-            step = incI.getAttribute("step");
-        document.getElementById(id).previousElementSibling.setAttribute(
-            "onclick",
-            "stepperInput('" + id + "', -" + step + ", " + min + ")"
-        );
-        document.getElementById(id)
-            .nextElementSibling.setAttribute(
-                "onclick",
-                "stepperInput('" + id + "', " + step + ", " + max + ")"
-            );
-    }
-
-    function stepperInput(id, s, m) {
-        var el = document.getElementById(id);
-        if (s > 0) {
-            if (parseInt(el.value) < m) {
-                el.value = parseInt(el.value) + s;
-            }
-        } else {
-            if (parseFloat(el.value) > m) {
-                el.value = parseInt(el.value) + s;
-            }
-        }
-        var scoreLabel = document.getElementById("score");
-        var scorePicker = document.getElementById("scorePicker");
-        scoreLabel.innerHTML = el.value;
+    function scoreOnClick(e) {
+        document.getElementById("score").innerHTML = e;
     }
 </script>
 
